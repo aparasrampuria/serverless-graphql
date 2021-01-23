@@ -1,0 +1,12 @@
+graphql:
+  handler: handler.graphql
+  name: ${self:custom.envdefault.lambdaFunctionPrefix}-${self:provider.stage}-graphql
+  description: Unified backend endpoint for GraphQL service
+  events:
+    - http:
+        path: ${self:custom.apiVersion, 'v1'}/graphql
+        method: get
+        cors: true
+        response:
+          headers:
+            Content-Type: application/json
